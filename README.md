@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 これに関する、大まかな流れは[こちら](https://zenn.dev/pino0701/articles/nextjs_github_pages)の記事の通りです。
 
-注意点：
+## 注意点：
 - [basePath](https://nextjs.org/docs/app/api-reference/next-config-js/basePath)は、サブディレクトリにデプロイする際に設定する必要がありますが、GitHub Actionsのワークフローファイルで自動的に追加されるため、next.config.jsでbasePathは設定してません。
   - ただし、Imageコンポーネントは、別途手動でbasePath付きに変換する必要があります。
 - GitHub ActionsのNext.jsテンプレートは、最新のAppRouterに対応していないので書き換える必要があります。
