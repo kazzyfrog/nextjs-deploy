@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import nextConfig from "../../next.config.mjs";
-const BASE_PATH = nextConfig.basePath || "";
+import { basePath } from "../../next.config.js";
+const BASE_PATH = basePath || "";
 
 export default function Home() {
   return (
