@@ -79,16 +79,23 @@ case 'next':
       }
 ```
 
-configファイルが、generatorConfigFileか、`./next.config.js`となっている。
+- configファイルが、generatorConfigFileか、`./next.config.js`となっている。
+- generatorConfigFileに関しては、[こちら](https://github.com/actions/configure-pages/blob/main/src/context.js#L8)にて、`generator_config_file`の値を読み取っている。
+  - アクション入力は、core.getInputで読み取ることができます。: https://github.com/actions/toolkit/tree/master/packages/core
 
-アクション入力は、core.getInputで読み取ることができます。: https://github.com/actions/toolkit/tree/master/packages/core
+つまり、`generator_config_file`が指定されていれば、それを設定ファイルとして検出し、basePathに関する情報を書き込む。
+何も指定されていなければ、`./next.config.js`に書き込む。という処理になっている。
 
-generatorConfigFileに関しては、[こちら](https://github.com/actions/configure-pages/blob/main/src/context.js#L8)にて、`generator_config_file`の値を読み取っている。
+`create-next-app`では、next.config.mjsがデフォルトで作成されるので、注意が必要！
 
 なので、next.config.mjs の場合は、下記のオプションを指定しないといけない。
 ```
 generator_config_file: next.config.mjs
 ```
+
+この指定をしないと、next.config.mjsがあるのに、next.config.jsが作成され、元のnext.config.mjsの内容が反映されなくなる。
+
+なので、`output: 'export',`が読み込まれていない。。。これによって、outディレクトリがエクスポートされず、outディレクトリが見つからないというエラーが出る！
 
 ### まとめ
 
