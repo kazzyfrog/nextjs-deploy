@@ -1,0 +1,25 @@
+[
+  {
+    "name": "oginochihiro",
+    "description": "おはようございます",
+    "favoriteColor": "#ffffff",
+    "favoriteEmoji": "🐉"
+  },
+  {
+    "name": "hoge",
+    "description": "お腹減った",
+    "favoriteColor": "#111111",
+    "favoriteEmoji": "🐈"
+  },
+  {
+    "name": "fuga",
+    "description": "眠い。。。。",
+    "favoriteColor": "#111115",
+    "favoriteEmoji": "🐻‍❄️"
+  },
+  {
+    "name": "piyo",
+    "description": "お腹いっぱい",
+    "favoriteColor": "#333333"
+  }
+]
