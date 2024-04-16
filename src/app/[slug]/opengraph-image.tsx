@@ -14,6 +14,7 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image({ params }: { params: { slug: string } }) {
+  await new Promise((resolve) => setTimeout(resolve, 10000));
   // Font
   //   const interSemiBold = fetch(
   //     new URL("./Inter-SemiBold.ttf", import.meta.url)
