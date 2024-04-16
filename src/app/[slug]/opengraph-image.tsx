@@ -13,7 +13,7 @@ export const size = {
 export const contentType = "image/png";
 
 // Image generation
-export default async function Image({ params }: { params: { slug: string } }) {
+export default async function Image({ params }: { params?: { slug: string } }) {
   await new Promise((resolve) => setTimeout(resolve, 10000));
   // Font
   //   const interSemiBold = fetch(
@@ -70,7 +70,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
               fontSize: 20,
             }}
           >
-            Hi there 👋 Im {params.slug}
+            Hi there 👋 Im {params?.slug}
           </span>
         </div>
         <div
