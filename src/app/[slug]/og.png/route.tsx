@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import users from "../../../../test.json";
 
-export const size = {
+const size = {
   width: 1200,
   height: 630,
 };
