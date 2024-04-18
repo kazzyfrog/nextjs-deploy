@@ -1,24 +1,16 @@
 import { ImageResponse } from "next/og";
+import users from "../../../../test.json";
 
-// Route segment config
-// export const runtime = "edge";
-
-// Image metadata
-export const alt = "About Acme";
 export const size = {
   width: 1200,
   height: 630,
 };
 
-export const contentType = "image/png";
-
-// Image generation
-export default async function Image({ params }: { params?: { slug: string } }) {
-  await new Promise((resolve) => setTimeout(resolve, 10000));
-  // Font
-  //   const interSemiBold = fetch(
-  //     new URL("./Inter-SemiBold.ttf", import.meta.url)
-  //   ).then((res) => res.arrayBuffer());
+export async function GET(
+  req: Request,
+  { params }: { params: { slug: string } }
+) {
+  const user = params.slug;
 
   return new ImageResponse(
     (
@@ -70,7 +62,7 @@ export default async function Image({ params }: { params?: { slug: string } }) {
               fontSize: 20,
             }}
           >
-            Hi there 👋 Im {params?.slug}
+            Hi there 👋 Im {user}
           </span>
         </div>
         <div
@@ -100,4 +92,10 @@ export default async function Image({ params }: { params?: { slug: string } }) {
       ...size,
     }
   );
+}
+
+export async function generateStaticParams() {
+  return users.map((user) => ({
+    slug: user.name,
+  }));
 }
