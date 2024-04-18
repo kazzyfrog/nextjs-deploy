@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import users from "../../../test.json";
+import { basePath } from "../../../next.config";
+const BASE_PATH = basePath || "";
 
 export default function UserPage({ params }: { params: { slug: string } }) {
   return (
@@ -22,7 +24,7 @@ export function generateMetadata({
 }): Metadata {
   return {
     openGraph: {
-      images: `/${params.slug}/og.png`,
+      images: `/${BASE_PATH}/${params.slug}/og.png`,
     },
   };
 }
