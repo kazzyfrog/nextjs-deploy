@@ -1,6 +1,9 @@
 import { ImageResponse } from "next/og";
 import users from "../../../../test.json";
 
+import fs from "fs/promises";
+import path from "path";
+
 const size = {
   width: 1200,
   height: 630,
@@ -11,6 +14,10 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   const user = params.slug;
+
+  const assetsDirectory = process.cwd() + "/assets";
+
+  const fontData = fs.readFile(path.join(assetsDirectory, "kongtext.ttf"));
 
   return new ImageResponse(
     (
@@ -81,7 +88,7 @@ export async function GET(
             lineHeight: 1.4,
           }}
         >
-          Making the Web. Faster.
+          Looks Good To Me.
         </div>
       </div>
     ),
@@ -90,6 +97,14 @@ export async function GET(
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
+      fonts: [
+        {
+          name: "Inter",
+          data: await fontData,
+          style: "normal",
+          weight: 700,
+        },
+      ],
     }
   );
 }

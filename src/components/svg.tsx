@@ -1,7 +1,7 @@
 "use client";
 
 import { svgDesign1 } from "@/utils/svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import satori from "satori";
 
 type Props = {
@@ -16,7 +16,8 @@ const Svg = (props: Props) => {
   const handleClick = () => {
     (async () => {
       const fontData = await fetch(
-        "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf"
+        // "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf"
+        new URL("../../assets/kongtext.ttf", import.meta.url)
       ).then((resp) => resp.arrayBuffer());
 
       const svg = await satori(
