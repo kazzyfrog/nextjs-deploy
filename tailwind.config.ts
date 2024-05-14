@@ -20,7 +20,7 @@ const config: Config = {
           transform: "translateX(0)",
         },
         to: {
-          transform: "translateX(100vw)",
+          transform: "translateX(95vw)",
         },
       },
 
@@ -29,7 +29,7 @@ const config: Config = {
           transform: "translateY(0)",
         },
         to: {
-          transform: "translateY(100vh)",
+          transform: "translateY(80vh)",
         },
       },
 
