@@ -6,8 +6,8 @@ import Hero from "@/components/hero";
 import GradientBackground from "@/components/gradient-background";
 const BASE_PATH = basePath || "";
 
-// const mainColor: string = contributors[0].favoriteColor;
-const mainColor = "#000";
+const mainColor: string = contributors[0].favoriteColor;
+// const mainColor = "#000";
 // const mainColor = "#ddcfb1";
 // const mainColor = "#fff";
 
