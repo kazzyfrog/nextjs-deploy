@@ -11,11 +11,18 @@ const mainColor: string = contributors[0].favoriteColor;
 // const mainColor = "#ddcfb1";
 // const mainColor = "#fff";
 
-type rgb = {
-  [k: string]: number;
-};
+type contributors = {
+  name: string;
+  github: string;
+  favoriteStack: string;
+  favoriteColor: string;
+  favoriteEmoji: string;
+}[];
 
-const groupContributorsBySection = (contributors, numSections) => {
+const groupContributorsBySection = (
+  contributors: contributors,
+  numSections: number,
+) => {
   const contributorsToDisplay = contributors.slice(0, 10 * numSections);
   const groups = [];
   const contributorsPerSection = 10;
