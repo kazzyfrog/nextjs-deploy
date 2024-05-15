@@ -3,6 +3,7 @@ import { Noto_Emoji } from "next/font/google";
 const emoji = Noto_Emoji({
   weight: "300",
   subsets: ["emoji"],
+  style: "normal",
 });
 
 type contributors = {
