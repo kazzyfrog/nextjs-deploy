@@ -10,6 +10,8 @@ const inter = Inter({
 
 const emoji = Noto_Emoji({
   subsets: ["emoji"],
+  weight: "300",
+  display: "swap",
   variable: "--font-noto-emoji",
 });
 
@@ -26,12 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body
-        className={`${inter.variable} ${emoji.variable}`}
-        style={{
-          fontFamily: "var(--font-inter), var(--font-noto-emoji)",
-        }}
-      >
+      <body className={`${inter.variable} ${emoji.variable}`}>
         <Header />
         {children}
         <Footer />

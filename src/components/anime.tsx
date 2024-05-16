@@ -22,7 +22,7 @@ const Anime = ({ contributors, isTopSction }: P) => {
   return (
     <>
       <div
-        className={`relative `}
+        className={`relative font-notoemoji`}
         // style={{ fontFamily: "var(--font-noto-emoji)" }}
       >
         {/* tailwind のclassをCSSに含める */}
