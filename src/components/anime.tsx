@@ -1,12 +1,9 @@
 import { Noto_Emoji } from "next/font/google";
 
-const emoji = Noto_Emoji({
-  weight: "300",
-  subsets: ["emoji"],
-  style: "normal",
-  display: "swap",
-  variable: "--font-noto-emoji",
-});
+// const emoji = Noto_Emoji({
+//   subsets: ["emoji"],
+//   variable: "--font-noto-emoji",
+// });
 
 type contributors = {
   name: string;
@@ -25,8 +22,8 @@ const Anime = ({ contributors, isTopSction }: P) => {
   return (
     <>
       <div
-        className={`relative ${emoji.variable}`}
-        style={{ fontFamily: "var(--font-noto-emoji)" }}
+        className={`relative `}
+        // style={{ fontFamily: "var(--font-noto-emoji)" }}
       >
         {/* tailwind のclassをCSSに含める */}
         <div className="animate-[horizontal_3s_ease-in-out_infinite_alternate_both] hidden">

@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Emoji } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const emoji = Noto_Emoji({
+  subsets: ["emoji"],
+  variable: "--font-noto-emoji",
 });
 
 export const metadata: Metadata = {
@@ -22,9 +27,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${inter.variable} `}
+        className={`${inter.variable} ${emoji.variable}`}
         style={{
-          fontFamily: "var(--font-inter)",
+          fontFamily: "var(--font-inter), var(--font-noto-emoji)",
         }}
       >
         <Header />
