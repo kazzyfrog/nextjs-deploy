@@ -4,6 +4,8 @@ const emoji = Noto_Emoji({
   weight: "300",
   subsets: ["emoji"],
   style: "normal",
+  display: "swap",
+  variable: "--font-noto-emoji",
 });
 
 type contributors = {
@@ -22,7 +24,17 @@ type P = {
 const Anime = ({ contributors, isTopSction }: P) => {
   return (
     <>
-      <div className={`relative ${emoji.className}`}>
+      <div
+        className={`relative ${emoji.variable}`}
+        style={{ fontFamily: "var(--font-noto-emoji)" }}
+      >
+        {/* tailwind のclassをCSSに含める */}
+        <div className="animate-[horizontal_3s_ease-in-out_infinite_alternate_both] hidden">
+          horizontal
+        </div>
+        <div className="animate-[vertical_3s_ease-in-out_infinite_alternate_both] hidden">
+          vertical
+        </div>
         {contributors.map((contributor, index) => (
           <EmojiComponent
             key={index}
@@ -91,14 +103,6 @@ const EmojiComponent = ({ index, contributor, isTopSction = false }: Props) => {
 
   return (
     <>
-      {/* tailwind のclassをCSSに含める */}
-      <div className="animate-[horizontal_3s_ease-in-out_infinite_alternate_both] hidden">
-        horizontal
-      </div>
-      <div className="animate-[vertical_3s_ease-in-out_infinite_alternate_both] hidden">
-        vertical
-      </div>
-
       <div
         className={` absolute w-20 h-20 rounded-full bg-transparent group cursor-pointer [perspective:1000px] flex items-center justify-center`}
         style={styles as React.CSSProperties}

@@ -21,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${inter.variable} `}>
+      <body
+        className={`${inter.variable} `}
+        style={{
+          fontFamily: "var(--font-inter)",
+        }}
+      >
         <Header />
         {children}
         <Footer />
