@@ -10,7 +10,7 @@ const inter = Inter({
 
 const emoji = Noto_Emoji({
   subsets: ["emoji"],
-  weight: "300",
+  weight: "400",
   display: "swap",
   variable: "--font-noto-emoji",
 });

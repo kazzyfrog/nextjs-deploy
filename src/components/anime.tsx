@@ -98,6 +98,9 @@ const EmojiComponent = ({ index, contributor, isTopSction = false }: Props) => {
     isTopSction && index === 0 ? "large" : "medium",
   );
 
+  // const notoEmoji = convertForNotoEmoji(contributor.favoriteEmoji);
+  const notoEmoji = emojiToUnicodeHex(contributor.favoriteEmoji);
+
   return (
     <>
       <div
@@ -108,9 +111,8 @@ const EmojiComponent = ({ index, contributor, isTopSction = false }: Props) => {
           <div className="absolute [backface-visibility:hidden] rounded-full w-full h-full">
             <div
               className={`flex flex-col items-center text-black justify-center h-full w-full gap-0.5 ${emojiSize}`}
-            >
-              {contributor.favoriteEmoji}
-            </div>
+              dangerouslySetInnerHTML={{ __html: notoEmoji }}
+            ></div>
           </div>
           <div
             style={{ borderColor: contributor.favoriteColor }}
@@ -128,3 +130,40 @@ const EmojiComponent = ({ index, contributor, isTopSction = false }: Props) => {
     </>
   );
 };
+
+// EmojiConversion.js
+
+// function convertForNotoEmoji(str: string) {
+//   const encoder = new TextEncoder();
+//   const emoji = encoder.encode(str);
+//   let hex = "";
+//   emoji.forEach((byte) => {
+//     hex += byte.toString(16).padStart(2, "0");
+//   });
+//   const hexLen = hex.length / 8;
+
+//   if (hexLen <= 1) {
+//     let emojiUtf = hex.replace(/^000/, "&#x");
+//     emojiUtf = `${emojiUtf};&#xfe0f;`;
+//     return emojiUtf;
+//   } else {
+//     return str;
+//   }
+// }
+
+// convert_for_notoemoji関数をJavaScriptに変換
+
+function emojiToUnicodeHex(emoji: string): string {
+  // 絵文字をUnicodeコードポイントに変換
+  const codePoint = emoji.codePointAt(0);
+  if (codePoint === undefined) {
+    throw new Error("Invalid emoji input");
+  }
+  // 16進数に変換し、Unicodeエスケープシーケンスの形式に整形
+  return `&#x${codePoint.toString(16).toUpperCase()};&#xfe0f;`;
+}
+
+// テスト
+const input = "🐸";
+const output = emojiToUnicodeHex(input);
+console.log(output); // 出力: &#x1F438;
