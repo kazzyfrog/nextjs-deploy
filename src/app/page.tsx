@@ -1,184 +1,116 @@
-import contributors from "../../dummy.json";
+import Image from "next/image";
+
 import { basePath } from "../../next.config.js";
-import { ReactNode } from "react";
-import Anime from "@/components/anime";
-import Hero from "@/components/hero";
-import GradientBackground from "@/components/gradient-background";
 const BASE_PATH = basePath || "";
 
-const mainColor: string = contributors[0].favoriteColor;
-// const mainColor = "#000";
-// const mainColor = "#ddcfb1";
-// const mainColor = "#fff";
-
-type contributors = {
-  name: string;
-  github: string;
-  favoriteStack: string;
-  favoriteColor: string;
-  favoriteEmoji: string;
-}[];
-
-const groupContributorsBySection = (
-  contributors: contributors,
-  numSections: number,
-) => {
-  const contributorsToDisplay = contributors.slice(0, 10 * numSections);
-  const groups = [];
-  const contributorsPerSection = 10;
-
-  for (let i = 0; i < numSections; i++) {
-    const start = i * contributorsPerSection;
-    const end = start + contributorsPerSection;
-    const group = contributorsToDisplay.slice(start, end);
-    groups.push(group);
-  }
-
-  return groups;
-};
-
 export default function Home() {
-  const contributorsBySection = groupContributorsBySection(contributors, 3);
   return (
-    <>
-      <div className="bg-gray-100 border-gray-200 border-y px-4 py-3">
-        <p className="text-center text-sm font-medium">
-          このプロジェクトが気に入りましたか？
-          <a href="#" className="inline-block underline">
-            GitHubからスターを付けてください 🤩
-          </a>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+          Get started by editing&nbsp;
+          <code className="font-mono font-bold">src/app/page.tsx</code>
         </p>
+        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+          <a
+            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            By{" "}
+            <Image
+              src={`${BASE_PATH}/vercel.svg`}
+              alt="Vercel Logo"
+              className="dark:invert"
+              width={100}
+              height={24}
+              priority
+            />
+          </a>
+        </div>
       </div>
 
-      <Hero />
+      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+        <Image
+          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          src={`${BASE_PATH}/next.svg`}
+          alt="Next.js Logo"
+          width={180}
+          height={37}
+          priority
+        />
+      </div>
 
-      <GradientBackground mainColor={mainColor}>
-        <Anime contributors={contributorsBySection[0]} isTopSction />
-        <section className="mx-auto max-w-screen-xl h-screen">
-          セクション１
-        </section>
+      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
+        <a
+          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Docs{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Find in-depth information about Next.js features and API.
+          </p>
+        </a>
 
-        {/* <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 text-center">
-            <div className="relative">
-              <Content
-                label="concept"
-                headline="実際の共同作業で、GitHubに慣れる"
-              >
-                Git/ GitHubは、一人では学びづらいものです。 <br />
-                1人で学習・開発している時は、 <br />
-                バージョン管理や、適切なメッセージを書く必要性を実感しにくい。{" "}
-                <br />
-                <br />
-                First Contributions
-                JAは、初学者歓迎のオープンなプロジェクトです。
-                <br />
-                チュートリアルを通じて、実際に共同開発を体験しGitHubを学べます！
-              </Content>
-            </div>
-          </div> */}
+        <a
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Learn{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          </p>
+        </a>
 
-        <Anime contributors={contributorsBySection[1]} />
-        <section className="mx-auto max-w-screen-xl h-screen">
-          セクション2
-        </section>
-        {/* <section className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-            <div className="relative">
-              <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 bg-white p-8">
-                <div className="relative h-64 overflow-hidden sm:h-80 lg:h-full">
-                  <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1496843916299-590492c751f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-                <div className="lg:py-16">
-                  <article className="space-y-4 text-gray-600">
-                    <Content
-                      label="Help Wanted"
-                      headline="このWebサイトを、もっとPOPにしよう"
-                    >
-                      チュートリアルは、実際にJSONファイルに変更を加えるシンプルな作業です。{" "}
-                      <br />
-                      <br />
-                      すると、あなたが入力した絵文字がこのサイト上に表示され、賑やかになります。
-                    </Content>
-                  </article>
-                  <Button href="#" className="mt-8">
-                    GitHub
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </section> */}
+        <a
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Templates{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Explore starter templates for Next.js.
+          </p>
+        </a>
 
-        <Anime contributors={contributorsBySection[2]} />
-        <section className="mx-auto max-w-screen-xl h-screen">
-          セクション3
-        </section>
-        {/* <section>
-            <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-              <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 bg-white p-8">
-                <div className="lg:py-16">
-                  <article className="space-y-4 text-gray-600">
-                    <Content
-                      label="concept"
-                      headline="初めてのOSS
-                    コントリビューションを体験する"
-                    >
-                      First Contributions
-                      JAに貢献（コントリビュート）したら、コントリビューターとして、個別ページとオリジナルのLGTM画像が生成されます。
-                      <br />
-                      <br />
-                      GitHub上のテキストコミュニケーションを、少しでも楽しいものにするために、ぜひ使ってみてください！
-                    </Content>
-                  </article>
-                  <Button href="#" className="mt-8">
-                    GitHub
-                  </Button>
-                </div>
-                <div className="relative h-64 overflow-hidden sm:h-80 lg:h-full">
-                  <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1496843916299-590492c751f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </section> */}
-      </GradientBackground>
-    </>
-  );
-}
-
-type Props = {
-  label: string;
-  headline: string;
-  children?: ReactNode;
-};
-function Content(props: Props) {
-  return (
-    <>
-      <p className=" uppercase text-red-600">{props.label}</p>
-      <h2 className="text-3xl font-bold sm:text-4xl mt-4">{props.headline}</h2>
-      <p className="mt-4 text-lg text-gray-800">{props.children}</p>
-    </>
-  );
-}
-
-// button component
-function Button(props: {
-  children: ReactNode;
-  href: string;
-  className?: string;
-}) {
-  return (
-    <button
-      className={`inline-block rounded-full bg-red-600 px-8 py-3 text-center text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 ${props.className}`}
-    >
-      <a href={props.href} target="_blank">
-        {props.children}
-      </a>
-    </button>
+        <a
+          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Deploy{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
+            Instantly deploy your Next.js site to a shareable URL with Vercel.
+          </p>
+        </a>
+      </div>
+    </main>
   );
 }
